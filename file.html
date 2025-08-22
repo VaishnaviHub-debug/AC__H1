@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><h3>Attendance Goal Calculator</h3></title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      max-width: 420px;
+      padding: 80px;
+      margin: auto;
+      color: #fff;
+    }
+    h2 {
+      text-align: center;
+      color: #ff6ec7; 
+      font-size: 28px;
+      margin-bottom: 25px;
+      text-shadow: 0 0 8px #ff6ec7;
+    }
+    label {
+      font-size: 15px;
+      font-weight: 600;
+      color: #00f7ff; 
+    }
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 12px 0;
+      border: 2px solid #555;
+      border-radius: 8px;
+      font-size: 15px;
+      background: #1e272e;
+      color: #fff;
+      transition: 0.3s;
+    }
+    input:hover {
+      border-color: #ff6ec7;
+      box-shadow: 0 0 10px #ff6ec7;
+    }
+    button {
+      width: 100%;
+      padding: 8px 10px;
+      margin: 8px 10px;
+      border: none;
+      border-radius: 120px;
+      background: linear-gradient(135deg, #ff6ec7, #00f7ff);
+      color: #000;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 8px #00f7ff;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 16px;
+      font-weight: 500;
+      color: #ffda79; 
+      text-align: center;
+      text-shadow: 0 0 6px #ffda79;
+    }
+  </style>
+</head>
+<body>
+  <h2>Attendance Calculator</h2>
+
+  <label for="target">Target Attended Classes:</label><br>
+  <input type="number" id="target" placeholder="e.g., 125"><br>
+
+  <label for="rate">Required Attendance Percentage (%):</label><br>
+  <input type="number" id="rate" placeholder="e.g., 75"><br>
+
+  <button onclick="calculate()">Calculate</button>
+
+  <p id="result"></p>
+
+  <script>
+    function calculate() {
+      const target = parseFloat(document.getElementById("target").value);
+      const rate = parseFloat(document.getElementById("rate").value);
+      const result = document.getElementById("result");
+
+      if (isNaN(target) || isNaN(rate) || target <= 0 || rate <= 0 || rate >= 100) {
+        result.innerHTML = " Please enter valid numbers (rate between 0 and 100).";
+        return;
+      }
+
+      const attendanceRate = rate / 100;
+      const totalClassesNeeded = target / attendanceRate;
+
+      result.innerHTML = ` To attend <strong>${target}</strong> classes for <strong>${rate}%</strong> of attendance, 
+                          you should attend at least <strong>${Math.ceil(totalClassesNeeded)}</strong> total classes.`;
+    }
+  </script>
+</body>
+</html>
