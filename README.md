@@ -1,4 +1,4 @@
-#--> Attendance Goal Calculator
+# --> Attendance Goal Calculator
 This is a simple web app that helps students calculate how many total classes that they need to attend in order to reach their target attendance percentage.  
 
 Features:
